@@ -10,14 +10,54 @@ filedelete,%a_mydocuments%\AutoConnector\updater\autoconnectordir
 SetWorkingDir %acdir%
 
 ;Update and progressbar starts here
-Progress,show,Downloading AutoConnector from source..,Updating AutoConnector
+startupdate:
+Progress,10,Downloading AutoConnector from source..,Updating AutoConnector
 sleep,2000
-Progress,10
-urldownloadtofile,https://github.com/Silverlink34/autoconnector/archive/master.zip, %a_mydocuments%\AutoConnector\updater\
-sleep, 5000
-progress,20,Extracting source...
+sleep,1000
+progress,15
+sleep,500
+progress,20
+sleep,500
+progress,30
+sleep, 3000
+urldownloadtofile,https://github.com/Silverlink34/autoconnector/archive/master.zip, %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip
+if errorlevel
+{	
+	if retryupdate = 1
+	{
+		progress,off
+		msgbox, Update failed. Running AutoConnector out-of-date.
+		fileappend,,%a_mydocuments%\AutoConnector\updater\updatefailed
+		run, %a_workingdir%\autoconnector.ahk
+	}
+	else
+	{
+		progress,off
+		msgbox, There was a problem downloading update. Trying 1 more time..
+		retryupdate = 1
+		gosub startupdate
+	}
+}
+progress,50,Extracting source...
+sleep,500
+progress,55
+sleep,500
+progress,60
+sleep,500
+progress,65
 run, %a_mydocuments%\autoconnector\programbin\unzip.exe %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip
-msgbox, go check the dir
+progress,70,Installing...
+sleep,500
+progress,75
+sleep,500
+filemove,%a_mydocuments%\AutoConnector\updater\autoconnector-master\*,%a_workingdir%,1
+progress,80
+sleep,200
+progress,85
+progress,100,Install Complete. Running updated AutoConnector.
+sleep, 3000
+progress, off
+run, %a_workingdir%\autoconnector.ahk
 exit
 
 
