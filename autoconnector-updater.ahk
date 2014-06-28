@@ -48,7 +48,7 @@ sleep,500
 progress,60
 sleep,500
 progress,65
-run, %a_mydocuments%\autoconnector\programbin\unzip.exe -u %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -d %a_mydocuments%\AutoConnector\updater\autoconnector-master
+run, %a_mydocuments%\autoconnector\programbin\unzip.exe -o %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -D %a_mydocuments%\AutoConnector\updater\autoconnector-master
 progress,70,Installing...
 sleep,500
 progress,75
