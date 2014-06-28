@@ -20,6 +20,8 @@ progress,20
 sleep,500
 progress,30
 sleep, 3000
+filedelete, %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip
+fileremovedir, %a_mydocuments%\AutoConnector\updater\autoconnector-master, 1
 urldownloadtofile,https://github.com/Silverlink34/autoconnector/archive/master.zip, %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip
 if errorlevel
 {	
@@ -27,8 +29,9 @@ if errorlevel
 	{
 		progress,off
 		msgbox, Update failed. Running AutoConnector out-of-date.
-		fileappend,,%a_mydocuments%\AutoConnector\updater\updatefailed
+		fileappend,1,%a_mydocuments%\AutoConnector\updater\updatefailed
 		run, %a_workingdir%\autoconnector.ahk
+		exitapp
 	}
 	else
 	{
@@ -45,12 +48,14 @@ sleep,500
 progress,60
 sleep,500
 progress,65
-run, %a_mydocuments%\autoconnector\programbin\unzip.exe %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip
+run, %a_mydocuments%\autoconnector\programbin\unzip.exe -u %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -d %a_mydocuments%\AutoConnector\updater\autoconnector-master
 progress,70,Installing...
 sleep,500
 progress,75
 sleep,500
-filemove,%a_mydocuments%\AutoConnector\updater\autoconnector-master\*,%a_workingdir%,1
+ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector-master
+	gosub extractfailed
+filemove,%a_mydocuments%\AutoConnector\updater\autoconnector-master\autoconnector-master\*,%a_workingdir%,1
 progress,80
 sleep,200
 progress,85
@@ -58,7 +63,8 @@ progress,100,Install Complete. Running updated AutoConnector.
 sleep, 3000
 progress, off
 run, %a_workingdir%\autoconnector.ahk
+exitapp
+extractfailed:
+msgbox, extract failed.
 exit
-
-
 
