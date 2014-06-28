@@ -62,6 +62,7 @@ progress,85
 progress,100,Install Complete. Running updated AutoConnector.
 sleep, 3000
 progress, off
+fileremovedir, %a_mydocuments%\AutoConnector\updater,1
 run, %a_workingdir%\autoconnector.ahk
 exitapp
 extractfailed:
