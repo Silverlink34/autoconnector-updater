@@ -48,13 +48,14 @@ sleep,500
 progress,60
 sleep,500
 progress,65
-run, %a_mydocuments%\autoconnector\programbin\unzip.exe -o %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -D %a_mydocuments%\AutoConnector\updater\autoconnector-master
+run, %a_mydocuments%\autoconnector\programbin\unzip.exe -u %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -d %a_mydocuments%\AutoConnector\updater\autoconnector-master
+sleep, 1000
+ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector-master
+	gosub extractfailed
 progress,70,Installing...
 sleep,500
 progress,75
 sleep,500
-ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector-master
-	gosub extractfailed
 filemove,%a_mydocuments%\AutoConnector\updater\autoconnector-master\autoconnector-master\*,%a_workingdir%,1
 progress,80
 sleep,200
@@ -65,6 +66,7 @@ progress, off
 run, %a_workingdir%\autoconnector.ahk
 exitapp
 extractfailed:
+progress, off
 msgbox, extract failed.
 exit
 
