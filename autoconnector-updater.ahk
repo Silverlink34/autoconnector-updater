@@ -58,7 +58,7 @@ progress,85
 progress,100,Install Complete. Running updated AutoConnector.
 sleep, 3000
 progress, off
-;run, %acdir%\autoconnector.ahk
+run, %acdir%\autoconnector.ahk
 exitapp
 extractfailed:
 progress, off
