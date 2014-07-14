@@ -52,7 +52,7 @@ sleep,500
 progress,75
 sleep,500
 msgbox, %acdir%
-;filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\autoconnector*,%acdir%,1
+filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\autoconnector*,%acdir%,1
 progress,80
 sleep,200
 progress,85
