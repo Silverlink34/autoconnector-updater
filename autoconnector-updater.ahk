@@ -42,13 +42,8 @@ if errorlevel
 	}
 }
 progress,50,Extracting source...
-sleep,500
-progress,55
-sleep,500
-progress,60
-sleep,500
-progress,65
-runwait, %comspec% /c %acdir%\programbin\7za x ..\updater\autoconnector-master.zip -o..\updater\autoconnector autoconnector -r -aoa,hide
+sleep,1000
+runwait, %comspec% /c %a_mydocuments%\autoconnector\programbin\7za x ..\updater\autoconnector-master.zip -o..\updater\autoconnector autoconnector -r -aoa,hide
 sleep, 1000
 ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector
 	gosub extractfailed
