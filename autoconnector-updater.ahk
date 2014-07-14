@@ -6,9 +6,7 @@
 #NoEnv ;supposed to make compatibility better
 ;Set working directory to AutoConnector's directory
 fileread,acdir,%a_mydocuments%\AutoConnector\updater\autoconnectordir
-msgbox,%acdir%
 filedelete,%a_mydocuments%\AutoConnector\updater\autoconnectordir
-
 
 ;Update and progressbar starts here
 startupdate:
@@ -52,7 +50,6 @@ progress,70,Installing...
 sleep,500
 progress,75
 sleep,500
-msgbox,%acdir%
 filedelete,%acdir%\*
 filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\autoconnector\*,%acdir%,1
 progress,80
