@@ -48,22 +48,24 @@ sleep,500
 progress,60
 sleep,500
 progress,65
-run, %a_mydocuments%\autoconnector\programbin\unzip.exe -u %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -d %a_mydocuments%\AutoConnector\updater\autoconnector-master
+runwait, %comspec% /c %a_workingdir%\programbin\7za x %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -o%a_mydocuments%\AutoConnector\updater\autoconnector autoconnector -r -aoa,hide
+;run, %a_mydocuments%\autoconnector\programbin\unzip.exe -u %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -d %a_mydocuments%\AutoConnector\updater\autoconnector-master
 sleep, 1000
-ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector-master
+ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector
 	gosub extractfailed
 progress,70,Installing...
 sleep,500
 progress,75
 sleep,500
-filemove,%a_mydocuments%\AutoConnector\updater\autoconnector-master\autoconnector-master\*,%a_workingdir%,1
+msgbox, %a_workingdir%
+;filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\autoconnector*,%a_workingdir%,1
 progress,80
 sleep,200
 progress,85
 progress,100,Install Complete. Running updated AutoConnector.
 sleep, 3000
 progress, off
-run, %a_workingdir%\autoconnector.ahk
+;run, %a_workingdir%\autoconnector.ahk
 exitapp
 extractfailed:
 progress, off
