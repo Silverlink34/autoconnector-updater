@@ -7,7 +7,7 @@
 ;Set working directory to AutoConnector's directory
 fileread,acdir,%a_mydocuments%\AutoConnector\updater\autoconnectordir
 filedelete,%a_mydocuments%\AutoConnector\updater\autoconnectordir
-SetWorkingDir %acdir%
+
 
 ;Update and progressbar starts here
 startupdate:
@@ -30,7 +30,7 @@ if errorlevel
 		progress,off
 		msgbox, Update failed. Running AutoConnector out-of-date.
 		fileappend,1,%a_mydocuments%\AutoConnector\updater\updatefailed
-		run, %a_workingdir%\autoconnector.ahk
+		run, %acdir%\autoconnector.ahk
 		exitapp
 	}
 	else
@@ -48,7 +48,7 @@ sleep,500
 progress,60
 sleep,500
 progress,65
-runwait, %comspec% /c %a_workingdir%\programbin\7za x %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -o%a_mydocuments%\AutoConnector\updater\autoconnector autoconnector -r -aoa,hide
+runwait, %comspec% /c %acdir%\programbin\7za x %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -o%a_mydocuments%\AutoConnector\updater\autoconnector autoconnector -r -aoa,hide
 sleep, 1000
 ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector
 	gosub extractfailed
@@ -56,15 +56,15 @@ progress,70,Installing...
 sleep,500
 progress,75
 sleep,500
-msgbox, %a_workingdir%
-;filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\autoconnector*,%a_workingdir%,1
+msgbox, %acdir%
+;filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\autoconnector*,%acdir%,1
 progress,80
 sleep,200
 progress,85
 progress,100,Install Complete. Running updated AutoConnector.
 sleep, 3000
 progress, off
-;run, %a_workingdir%\autoconnector.ahk
+;run, %acdir%\autoconnector.ahk
 exitapp
 extractfailed:
 progress, off
