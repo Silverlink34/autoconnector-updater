@@ -48,7 +48,7 @@ sleep,500
 progress,60
 sleep,500
 progress,65
-runwait, %comspec% /c %acdir%\programbin\7za x %a_mydocuments%\AutoConnector\updater\autoconnector-master.zip -o%a_mydocuments%\AutoConnector\updater\autoconnector autoconnector -r -aoa,hide
+runwait, %comspec% /c %acdir%\programbin\7za x ..\updater\autoconnector-master.zip -o..\updater\autoconnector autoconnector -r -aoa,hide
 sleep, 1000
 ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector
 	gosub extractfailed
