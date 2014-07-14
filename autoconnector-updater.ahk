@@ -52,6 +52,7 @@ progress,70,Installing...
 sleep,500
 progress,75
 sleep,500
+msgbox,%acdir%
 filedelete,%acdir%\*
 filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\autoconnector\*,%acdir%,1
 progress,80
