@@ -43,7 +43,7 @@ filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-maste
 progress,100,Install Complete. Running updated AutoConnector.
 sleep, 3000
 progress, off
-run, %acdir%\autoconnector.ahk
+run, %acdir%\autoconnector.exe
 exitapp
 extractfailed:
 progress, off
