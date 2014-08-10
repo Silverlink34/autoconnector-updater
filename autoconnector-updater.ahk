@@ -39,7 +39,7 @@ msgbox, %acdir%
 ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector
 	gosub extractfailed
 progress,70,Killing AutoConnector.exe if open..
-Process,close,AutoConnector.exe
+Process,close,AutoConnector.exe*
 progress,75,Installing...
 filedelete,%acdir%\autoconnector.exe
 filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\AutoConnector\AutoConnector.exe,%acdir%
