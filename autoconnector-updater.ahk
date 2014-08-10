@@ -39,8 +39,8 @@ msgbox, %acdir%
 ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector
 	gosub extractfailed
 progress,70,Installing...
-filedelete,%acdir%\*
-filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\autoconnector\AutoConnector.exe,%acdir%,1
+filedelete,%acdir%\autoconnector.exe
+filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-master\AutoConnector\AutoConnector.exe,%acdir%
 progress,100,Install Complete. Running updated AutoConnector.
 sleep, 3000
 progress, off
