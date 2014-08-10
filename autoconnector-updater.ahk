@@ -35,7 +35,7 @@ if errorlevel
 progress,50,Extracting source...
 runwait, %comspec% /c %a_mydocuments%\autoconnector\programbin\7za x %a_mydocuments%\autoconnector\updater\autoconnector-master.zip -o%a_mydocuments%\autoconnector\updater\autoconnector autoconnector -r -aoa,hide
 sleep, 1000
-msgbox
+msgbox, %acdir%
 ifnotexist %a_mydocuments%\AutoConnector\updater\autoconnector
 	gosub extractfailed
 progress,70,Installing...
@@ -44,6 +44,7 @@ filemove,%a_mydocuments%\AutoConnector\updater\autoconnector\autoconnector-maste
 progress,100,Install Complete. Running updated AutoConnector.
 sleep, 3000
 progress, off
+msgbox
 run, %acdir%\autoconnector.exe
 exitapp
 extractfailed:
